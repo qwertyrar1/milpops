@@ -1,23 +1,40 @@
+import unittest
+
 print("Введите исходные размеры изображения")
-width = int(input())
-height = int(input())
-width_percent = 100 # Пусть ширина = 100%
-height_percent = height / (width / width_percent)
-print("Введите то что хотите найти,h-высоту,w-ширину")
-check = str(input())
-if check != "h" and check != "w":
-    print("Данные введены неверно!")
-elif check == "h":
-    print("Введите новую ширину")
-    h_width = int(input())
-    h_height = h_width / width_percent * height_percent
-    print("Высота:")
-    print(round(h_height))
-elif check == "w":
-    print("Введите новую высоту")
-    w_height = int(input())
-    w_width = w_height / height_percent * width_percent
-    print("Ширина:")
-    print(round(w_width))
+orig_width = int(input())
+orig_height = int(input())
+
+def resize():
+
+    width_percent = 100 # Пусть ширина = 100%
+    height_percent = orig_height / (orig_width / width_percent)
+    print("Изменить по высоте или ширине?h/w")
+    check = str(input())
+
+    if check != "h" and check != "w":
+        return "Данные введены неверно!"
+    elif check == "w":
+        print("Введите новую ширину")
+        w_width = int(input())
+        w_height = w_width / width_percent * height_percent
+        return round(w_width) , round(w_height)
+    elif check == "h":
+        print("Введите новую высоту")
+        h_height = int(input())
+        h_width = h_height / height_percent * width_percent
+        return round(h_width) , round(h_height)
+11
+
+
+print(resize())
+
+
+class ResizeOrientationTestCase(unittest.TestCase):
+
+    def test_orientation(self):
+        self.assertLessEqual(orig_width, orig_height, msg=" горизонтальная картинкаs")
+
+    def test_orientation_horizont(self):
+        self.assertGreaterEqual(orig_width, orig_height, msg="вертикальная картинка")
 
 
