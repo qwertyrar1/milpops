@@ -1,11 +1,7 @@
-import unittest
-
-print("Введите исходные размеры изображения")
-orig_width = int(input())
-orig_height = int(input())
 
 def resize():
-
+    orig_width = int(input())
+    orig_height = int(input())
     width_percent = 100 # Пусть ширина = 100%
     height_percent = orig_height / (orig_width / width_percent)
     print("Изменить по высоте или ширине?h/w")
@@ -23,18 +19,10 @@ def resize():
         h_height = int(input())
         h_width = h_height / height_percent * width_percent
         return round(h_width) , round(h_height)
-11
 
 
 print(resize())
 
 
-class ResizeOrientationTestCase(unittest.TestCase):
-
-    def test_orientation(self):
-        self.assertLessEqual(orig_width, orig_height, msg=" горизонтальная картинкаs")
-
-    def test_orientation_horizont(self):
-        self.assertGreaterEqual(orig_width, orig_height, msg="вертикальная картинка")
 
 
