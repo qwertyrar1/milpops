@@ -1,7 +1,15 @@
+print("Введите исходные размеры изображения")
+def width():
+    width = int(input())
+    return width
+orig_width = width()
+
+def height():
+    height = int(input())
+    return height
+orig_height = height()
 
 def resize():
-    orig_width = int(input())
-    orig_height = int(input())
     width_percent = 100 # Пусть ширина = 100%
     height_percent = orig_height / (orig_width / width_percent)
     print("Изменить по высоте или ширине?h/w")

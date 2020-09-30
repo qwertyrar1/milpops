@@ -1,23 +1,14 @@
 import unittest
-
-
-def width():
-    width = int(input())
-    return width
-#width == orig_width
-
-def height():
-    height = int(input())
-    return height
-#height == orig_height
+from work import width
+from work import height
 
 class ResizeOrientationTestCase(unittest.TestCase):
 
     def test_orientation_vertical(self):
-        self.assertLess(width(), height() , msg="Вериткальная картинка")
+        self.assertLess(width(), height() , msg="Это горизонтальная картинка")
 
     def test_orientation_horizont(self):
-        self.assertGreater(width() , height() , msg="Горизонтальная картинка")
+        self.assertGreater(width() , height() , msg="Это вертикальная картинка")
 
 if __name__ == '__main__':
     unittest.main()
